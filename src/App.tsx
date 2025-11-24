@@ -1,17 +1,43 @@
-import React from 'react';
+import React from "react";
+import { cn } from "@/lib/utils";
+import { Hero } from "@/components/Hero";
+import { Features } from "@/components/Features";
+import { Pricing } from "@/components/Pricing";
+import { Testimonials } from "@/components/Testimonials";
+import { Footer } from "@/components/Footer";
+import { siteConfig } from "@/config/site";
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <main className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold py-16 text-center">
-          Create a modern landing page focused on cat adoption. The page should prominently display pricing information related to the adoption process.
-        </h1>
-        <p className="text-center text-muted-foreground mb-8">
-          Your AI-generated landing page is ready! Components will be imported below.
-        </p>
-        {/* Generated sections will be imported and rendered here */}
+    <div className="bg-background text-foreground">
+      <main className="relative overflow-hidden">
+        <Hero
+          title={siteConfig.hero.title}
+          description={siteConfig.hero.description}
+          image={siteConfig.hero.image}
+        />
+        <div className="container mx-auto py-12 md:py-24">
+          <Features
+            title={siteConfig.features.title}
+            features={siteConfig.features.items}
+          />
+          <Pricing
+            title={siteConfig.pricing.title}
+            description={siteConfig.pricing.description}
+            plans={siteConfig.pricing.plans}
+          />
+          <Testimonials
+            title={siteConfig.testimonials.title}
+            testimonials={siteConfig.testimonials.items}
+          />
+        </div>
+        <Footer
+          siteName={siteConfig.name}
+          copyright={siteConfig.footer.copyright}
+        />
       </main>
     </div>
   );
-}
+};
+
+export default App;
